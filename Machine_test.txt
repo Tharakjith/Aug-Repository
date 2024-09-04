@@ -1,0 +1,220 @@
+-----------A system to store Student mark list for maths and english for the entire academic year. Student Id, Name ,Tel.No, gender etc, to be captured. Term wise and Test wise results  of each subject to be stored.---------------------------------
+
+
+
+CREATE TABLE Students (
+    student_id INT PRIMARY KEY,
+    name VARCHAR(100) NOT NULL,
+    tel_no VARCHAR(15),     
+    gender CHAR(1) CHECK (gender IN ('M', 'F'))
+);
+
+CREATE TABLE Subjects (
+    subject_id INT PRIMARY KEY,
+    subject_name VARCHAR(50) CHECK (subject_name IN ('Maths', 'English'))
+);
+
+CREATE TABLE Terms (
+    term_id INT PRIMARY KEY,
+    term_number INT CHECK (term_number IN (1, 2))
+);
+
+CREATE TABLE Tests (
+    test_id INT PRIMARY KEY,
+    test_number INT
+);
+
+CREATE TABLE Marks (
+    student_id INT,
+    subject_id INT,
+    term_id INT,
+    test_id INT,
+    marks INT,
+    PRIMARY KEY (student_id, subject_id, term_id, test_id),
+    FOREIGN KEY (student_id) REFERENCES Students(student_id),
+    FOREIGN KEY (subject_id) REFERENCES Subjects(subject_id),
+    FOREIGN KEY (term_id) REFERENCES Terms(term_id),
+    FOREIGN KEY (test_id) REFERENCES Tests(test_id)
+);
+
+
+INSERT ALL  
+INTO Students (student_id, name, tel_no, gender) 
+VALUES (1, 'Abhiram', '1234567890', 'F')
+INTO Students (student_id, name, tel_no, gender)
+VALUES(2, 'Bobby', '2345678901', 'M')
+INTO Students (student_id, name, tel_no, gender)
+VALUES(3, 'Charlie', '3456789012', 'M')
+INTO Students (student_id, name, tel_no, gender)
+VALUES(4, 'Damodaran', '4567890123', 'M')
+INTO Students (student_id, name, tel_no, gender)
+VALUES(5, 'Elakka', '5678901234', 'F')
+INTO Students (student_id, name, tel_no, gender)
+VALUES(6, 'Rahul', '6789012345', 'M')
+INTO Students (student_id, name, tel_no, gender)
+VALUES(7, 'Sunmy', '7890123456', 'F')
+SELECT * FROM dual;
+
+
+INSERT ALL 
+INTO Subjects (subject_id, subject_name) 
+VALUES (1, 'Maths')
+INTO Subjects (subject_id, subject_name) 
+VALUES (2, 'English')
+SELECT * from dual;
+
+
+INSERT ALL 
+INTO Terms (term_id, term_number) 
+VALUES (1, 1)
+INTO Terms (term_id, term_number) 
+VALUES (2, 2)
+SELECT * FROM dual;
+
+
+INSERT ALL 
+INTO Tests (test_id, test_number) 
+VALUES (1, 1)
+SELECT * FROM dual;
+
+
+INSERT ALL 
+INTO Marks (student_id, subject_id, term_id, test_id, marks) 
+VALUES (1, 1, 1, 1, 85)
+INTO Marks (student_id, subject_id, term_id, test_id, marks) 
+VALUES(1, 2, 1, 1, 90)
+INTO Marks (student_id, subject_id, term_id, test_id, marks)
+VALUES(2, 1, 1, 1, 78)
+INTO Marks (student_id, subject_id, term_id, test_id, marks)
+VALUES(2, 2, 1, 1, 82)
+INTO Marks (student_id, subject_id, term_id, test_id, marks)
+VALUES(3, 1, 1, 1, 88)
+INTO Marks (student_id, subject_id, term_id, test_id, marks)
+VALUES(3, 2, 1, 1, 79)
+INTO Marks (student_id, subject_id, term_id, test_id, marks)
+VALUES(4, 1, 1, 1, 91)
+INTO Marks (student_id, subject_id, term_id, test_id, marks)
+VALUES(4, 2, 1, 1, 85)
+INTO Marks (student_id, subject_id, term_id, test_id, marks)
+VALUES(5, 1, 1, 1, 75)
+INTO Marks (student_id, subject_id, term_id, test_id, marks)
+VALUES(5, 2, 1, 1, 87)
+INTO Marks (student_id, subject_id, term_id, test_id, marks)
+VALUES(6, 1, 1, 1, 95)
+INTO Marks (student_id, subject_id, term_id, test_id, marks)
+VALUES(6, 2, 1, 1, 80)
+INTO Marks (student_id, subject_id, term_id, test_id, marks)
+VALUES(7, 1, 1, 1, 89)
+INTO Marks (student_id, subject_id, term_id, test_id, marks)
+VALUES(7, 2, 1, 1, 92)
+INTO Marks (student_id, subject_id, term_id, test_id, marks)
+VALUES(1, 1, 2, 1, 88)
+INTO Marks (student_id, subject_id, term_id, test_id, marks)
+VALUES(1, 2, 2, 1, NULL)
+INTO Marks (student_id, subject_id, term_id, test_id, marks)
+VALUES(2, 1, 2, 1, 80)
+INTO Marks (student_id, subject_id, term_id, test_id, marks)
+VALUES(2, 2, 2, 1, 85)
+INTO Marks (student_id, subject_id, term_id, test_id, marks)
+VALUES(3, 1, 2, 1, 90)
+INTO Marks (student_id, subject_id, term_id, test_id, marks)
+VALUES(3, 2, 2, 1, NULL)
+INTO Marks (student_id, subject_id, term_id, test_id, marks)
+VALUES(4, 1, 2, 1, 94)
+INTO Marks (student_id, subject_id, term_id, test_id, marks)
+VALUES(4, 2, 2, 1, 89)
+INTO Marks (student_id, subject_id, term_id, test_id, marks)
+VALUES(5, 1, 2, 1, 78)
+INTO Marks (student_id, subject_id, term_id, test_id, marks)
+VALUES(5, 2, 2, 1, 88)
+INTO Marks (student_id, subject_id, term_id, test_id, marks)
+VALUES(6, 1, 2, 1, 96)
+INTO Marks (student_id, subject_id, term_id, test_id, marks)
+VALUES(6, 2, 2, 1, 82)
+INTO Marks (student_id, subject_id, term_id, test_id, marks)
+VALUES(7, 1, 2, 1, 91)
+INTO Marks (student_id, subject_id, term_id, test_id, marks)
+VALUES(7, 2, 2, 1, 90)
+SELECT * FROM dual;
+
+-----------1. Student name and maths mark for term 1 for all students-------------------------------------------------------
+
+SELECT s.name, 
+       COALESCE(m.marks, 0) AS maths_marks
+FROM Students s
+LEFT JOIN Marks m ON s.student_id = m.student_id
+INNER JOIN Subjects sub ON m.subject_id = sub.subject_id
+INNER JOIN Terms t ON m.term_id = t.term_id
+WHERE sub.subject_name = 'Maths'
+  AND t.term_number = 1;
+
+
+-----------2. Student id and total marks of the student---------------------------------------------------------------------
+
+SELECT student_id, 
+       COALESCE(SUM(marks), 0) AS total_marks
+FROM Marks
+GROUP BY student_id;
+
+-----------3. Sudent details for all students whose name starts with S or has P in their name. Sort in ascending order of name-
+
+SELECT *
+FROM Students
+WHERE name LIKE 'S%' OR name LIKE '%P%'
+ORDER BY name ASC;
+
+-----------4. Student name and English mark for term 2 for all students. If mark is not there, show 'A' in the place of mark---
+
+SELECT s.name, 
+       COALESCE(m.marks, 0) AS english_marks
+FROM Students s
+LEFT JOIN Marks m ON s.student_id = m.student_id
+INNER JOIN Subjects sub ON m.subject_id = sub.subject_id
+INNER JOIN Terms t ON m.term_id = t.term_id
+WHERE sub.subject_name = 'English'
+  AND t.term_number = 2;
+
+
+-----------5. Student id and total marks of the student for all boys------------------------------------------------------------
+
+SELECT s.student_id, 
+       COALESCE(SUM(m.marks), 0) AS total_marks
+FROM Students s
+LEFT JOIN Marks m ON s.student_id = m.student_id
+WHERE s.gender = 'M'
+GROUP BY s.student_id;
+
+
+----------6. Sudent details for all students whose has phone number and whose name starts with A. Sort in ascending order of name--
+
+SELECT *
+FROM Students
+WHERE tel_no IS NOT NULL
+  AND name LIKE 'A%'
+ORDER BY name ASC;
+
+
+----------7. Student name and English mark for term 2 for all students. If mark is not there, show '0' in the place of mark-------
+
+SELECT s.name, 
+       COALESCE(m.marks, 0) AS english_marks
+FROM Students s
+LEFT JOIN Marks m ON s.student_id = m.student_id
+INNER JOIN Subjects sub ON m.subject_id = sub.subject_id
+INNER JOIN Terms t ON m.term_id = t.term_id
+WHERE sub.subject_name = 'English'
+  AND t.term_number = 2;
+
+-----------8. Sudent details for all boys who has the same mark for maths as 'Rahul'----------------------------------------------
+SELECT b.*
+FROM Students b
+JOIN Marks bm ON b.student_id = bm.student_id
+JOIN Students r ON r.name = 'Rahul'
+JOIN Marks rm ON r.student_id = rm.student_id
+WHERE bm.subject_id = (SELECT subject_id FROM Subjects WHERE subject_name = 'Maths')
+  AND rm.subject_id = (SELECT subject_id FROM Subjects WHERE subject_name = 'Maths')
+  AND bm.marks = rm.marks
+  AND b.gender = 'M';
+
+
+
